@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>YouTube Live 自動埋め込み</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      padding: 20px;
+    }
+    #player {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+<h2>YouTube ライブ配信（自動検出）</h2>
+<div id="player">ライブ配信を確認しています...</div>
+
+<script>
+  const apiKey = "AIzaSyAiIB9Bd0k3Qq16v7RSi7XwEaWXxBkTDC4";  // ←あなたの API キー
+  const channelId = "UCz3pwNQh-HymdkGl2MfsLhA"; // ←あなたのチャンネルID
+
+  // ライブ配信を検索
+  fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=${channelId}&eventType=live&type=video&key=${apiKey}`)
+    .then(res => res.json())
+    .then(data => {
+      const player = document.getElementById("player");
+
+      if (data.items && data.items.length > 0) {
+        const liveId = data.items[0].id.videoId;
+
+        player.innerHTML = `
+          <iframe width="800" height="450"
+            src="https://www.youtube.com/embed/${liveId}"
+            referrerpolicy="strict-origin-when-cross-origin"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen>
+          </iframe>
+        `;
+      } else {
+        player.innerHTML = "<strong>現在ライブ配信はありません。</strong>";
+      }
+    })
+    .catch(err => {
+      document.getElementById("player").innerHTML =
+        "エラーが発生しました：" + err;
+    });
+</script>
+
+</body>
+</html>
+
