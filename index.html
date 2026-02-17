@@ -18,37 +18,16 @@
 </head>
 <body>
   <h1>YouTubeチャンネル埋め込みプレーヤー</h1>
-
-  <p>チャンネルID：</p>
-  <input id="channelId" type="text" size="40"
-         placeholder="例: UC_x5XG1OV2P6uZZ5FSM9Ttw">
-  <button id="loadBtn">読み込み</button>
+  <p>チャンネルID: <code>UCz3pwNQh-HymdkGl2MfsLhA</code> の最新ライブ/動画を表示します。</p>
 
   <div style="margin-top: 20px;">
     <iframe
       id="player"
-      src=""
+      src="https://www.youtube.com/embed/live_stream?channel=UCz3pwNQh-HymdkGl2MfsLhA"
       frameborder="0"
       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
       allowfullscreen
     ></iframe>
   </div>
-
-  <script>
-    const input  = document.getElementById('channelId');
-    const button = document.getElementById('loadBtn');
-    const frame  = document.getElementById('player');
-
-    button.addEventListener('click', () => {
-      const id = input.value.trim();
-      if (!id) {
-        alert('チャンネルIDを入力してください');
-        return;
-      }
-      const url = 'https://www.youtube.com/embed/live_stream?channel='
-                + encodeURIComponent(id);
-      frame.src = url;
-    });
-  </script>
 </body>
 </html>
