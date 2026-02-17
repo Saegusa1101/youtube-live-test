@@ -1,34 +1,36 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-    <meta charset="UTF-8">
-    <title>ローカルサイトのテスト</title>
-
-    <script src="https://apis.google.com/js/platform.js"></script>
+  <meta charset="UTF-8">
+  <title>YouTube チャンネル埋め込み（API不要）</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      padding: 20px;
+    }
+    iframe {
+      margin-top: 20px;
+    }
+  </style>
 </head>
 <body>
-    <h1>こんにちは！ローカルサイトです。</h1>
-    <p>これは自分のPCだけで表示されるテストページです。</p>
 
-    <div class="g-ytsubscribe"
-         data-channelid="UCz3pwNQh-HymdkGl2MfsLhA"
-         data-layout="full"
-         data-theme="dark"
-         data-count="default">
-    </div>
+<h2>YouTube チャンネルの最新動画（自動更新）</h2>
+<p>※この埋め込みは API キー不要で動作します。</p>
 
-    <hr>
+<!-- 最新動画の再生リストを埋め込む -->
+<iframe width="800" height="450"
+  src="https://www.youtube.com/embed?list=UUz3pwNQh-HymdkGl2MfsLhA"
+  referrerpolicy="strict-origin-when-cross-origin"
+  frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  allowfullscreen>
+</iframe>
 
-    <h2>YouTube 動画埋め込み（テスト）</h2>
-    <iframe width="560" height="315"
-        src="https://www.youtube.com/channel/UCz3pwNQh-HymdkGl2MfsLhA/live"
-        frameborder="0"
-        allowfullscreen>
-    </iframe>
+<p>
+このプレーヤーは、あなたのチャンネルの最新動画を自動で再生します。<br>
+ライブ配信の自動検出は API キーが必要ですが、最新動画の自動更新は API 不要で動作します。
+</p>
 
 </body>
 </html>
-
-
-
-
