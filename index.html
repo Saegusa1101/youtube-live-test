@@ -8,19 +8,15 @@
       font-family: sans-serif;
       padding: 20px;
     }
-    iframe {
-      margin-top: 20px;
-    }
   </style>
 </head>
 <body>
 
-<h2>YouTube チャンネルの最新動画（自動更新）</h2>
-<p>※この埋め込みは API キー不要で動作します。</p>
+<h2>YouTube チャンネルの動画一覧（API不要）</h2>
+<p>※この方式は「この動画は再生できません」エラーが発生しにくい安定版です。</p>
 
-<!-- 最新動画の再生リストを埋め込む -->
 <iframe width="800" height="450"
-  src="https://www.youtube.com/embed?list=UUz3pwNQh-HymdkGl2MfsLhA"
+  src="https://www.youtube.com/embed?listType=user_uploads&list=UCz3pwNQh-HymdkGl2MfsLhA"
   referrerpolicy="strict-origin-when-cross-origin"
   frameborder="0"
   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -28,8 +24,8 @@
 </iframe>
 
 <p>
-このプレーヤーは、あなたのチャンネルの最新動画を自動で再生します。<br>
-ライブ配信の自動検出は API キーが必要ですが、最新動画の自動更新は API 不要で動作します。
+この埋め込みは、あなたのチャンネルの動画一覧を YouTube 公式の方法で表示します。<br>
+API キー不要で、再生エラーが起きにくい方式です。
 </p>
 
 </body>
