@@ -2,31 +2,58 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>YouTube チャンネル埋め込み（API不要）</title>
+  <title>YouTubeチャンネル動画一覧リンク</title>
   <style>
     body {
       font-family: sans-serif;
-      padding: 20px;
+    }
+    .channel-box {
+      border: 1px solid #ccc;
+      padding: 16px;
+      max-width: 480px;
+      margin: 20px auto;
+    }
+    .channel-box input {
+      width: 100%;
+      padding: 8px;
+      margin: 8px 0;
+    }
+    .channel-box a {
+      display: inline-block;
+      margin-top: 12px;
+      padding: 8px 12px;
+      background: #cc0000;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 4px;
     }
   </style>
 </head>
 <body>
+  <div class="channel-box">
+    <h1>YouTubeチャンネル動画一覧</h1>
+    <label for="channelId">チャンネルIDを入力：</label>
+    <input id="channelId" type="text" placeholder="例: UC_x5XG1OV2P6uZZ5FSM9Ttw">
+    <br>
+    <a id="videoLink" href="#" target="_blank">チャンネルの動画一覧を開く</a>
+  </div>
 
-<h2>YouTube チャンネルの動画一覧（API不要）</h2>
-<p>※この方式は「この動画は再生できません」エラーが発生しにくい安定版です。</p>
+  <script>
+    const input  = document.getElementById('channelId');
+    const linkEl = document.getElementById('videoLink');
 
-<iframe width="800" height="450"
-  src="https://www.youtube.com/embed?listType=user_uploads&list=UCz3pwNQh-HymdkGl2MfsLhA"
-  referrerpolicy="strict-origin-when-cross-origin"
-  frameborder="0"
-  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-  allowfullscreen>
-</iframe>
+    function updateLink() {
+      const id = input.value.trim();
+      if (id) {
+        linkEl.href = 'https://www.youtube.com/channel/' + encodeURIComponent(id) + '/videos';
+      } else {
+        linkEl.href = '#';
+      }
+    }
 
-<p>
-この埋め込みは、あなたのチャンネルの動画一覧を YouTube 公式の方法で表示します。<br>
-API キー不要で、再生エラーが起きにくい方式です。
-</p>
-
+    input.addEventListener('input', updateLink);
+    // ページ読み込み時に初期更新
+    updateLink();
+  </script>
 </body>
 </html>
